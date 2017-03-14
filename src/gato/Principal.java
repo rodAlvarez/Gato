@@ -17,6 +17,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     Jugador jugador=Jugador.getJugador();
+    Juego juego=Juego.getJuego();
     public Principal() {
         initComponents();
     }
@@ -99,9 +100,13 @@ public class Principal extends javax.swing.JFrame {
         String nombre=txtJugador.getText().trim();
         if(!nombre.equals("")){
             jugador.setNombreJugador(txtJugador.getText().trim());
+            juego.prologMysql();
+            juego.baseDatosAñadir(jugador.getNombreJugador());
+            /*
             Tablero t1=new Tablero();
             t1.setLocationRelativeTo(null);
             t1.setVisible(true);
+            */
         }else
             JOptionPane.showMessageDialog(null, "Debes de insertar un nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnJugarActionPerformed

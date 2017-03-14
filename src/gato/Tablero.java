@@ -78,6 +78,7 @@ public class Tablero extends javax.swing.JFrame {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(246, 94));
         jScrollPane1.setRequestFocusEnabled(false);
 
+        txtMensajes.setEditable(false);
         txtMensajes.setColumns(20);
         txtMensajes.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtMensajes.setRows(5);

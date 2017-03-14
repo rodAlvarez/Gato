@@ -5,6 +5,8 @@
  */
 package gato;
 
+import org.jpl7.Query;
+
 /**
  *
  * @author Sonny
@@ -60,5 +62,24 @@ public class Juego {
             turno="maquina";
             ficha="o";
         }
+    }
+    
+    public void prologMysql(){
+        String t1="consult('mysql.pl')";
+        Query q1=new Query(t1);
+        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
+    }
+    
+    public void baseDatosIni(){
+        String t1="abrir";
+        Query q1=new Query(t1);
+        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
+    }
+    
+    public void baseDatosAñadir(String nombre){
+        baseDatosIni();
+        String t1="insertar(1,"+nombre+")";
+        Query q1=new Query(t1);
+        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
     }
 }

@@ -70,7 +70,7 @@ public class Juego {
         System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
     }
     
-    public void baseDatosIni(){
+    private void baseDatosIni(){
         String t1="abrir";
         Query q1=new Query(t1);
         System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
@@ -78,8 +78,8 @@ public class Juego {
     
     public void baseDatosAñadir(String nombre){
         baseDatosIni();
-        String t1="insertar(1,"+nombre+")";
+        String t1="insertar(1,"+"'"+nombre+"'"+",X).";
         Query q1=new Query(t1);
-        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
+        System.out.println(t1+" "+(q1.hasMoreSolutions()? "correcto" : "fallo"));
     }
 }

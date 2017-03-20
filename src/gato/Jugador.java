@@ -5,6 +5,9 @@
  */
 package gato;
 
+import org.jpl7.Query;
+import java.util.HashMap;
+
 /**
  *
  * @author Rod
@@ -67,5 +70,41 @@ public class Jugador {
         this.empates = empates;
     }
     
+    private void baseDatosIni(){
+        String t1="abrir";
+        Query q1=new Query(t1);
+        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
+    }
     
+    public boolean existe(String nomb){
+        boolean existe=false;
+        
+        baseDatosIni();
+        String t1="leer_nombres(X)";
+        Query q1=new Query(t1);
+        
+        while (q1.hasMoreSolutions()) {
+            HashMap hm=(HashMap) q1.nextSolution();
+            if(nomb.equals(hm.get("X").toString())){
+                existe=true;
+                break;
+            }
+        }
+        
+        return existe;
+    }
+    
+    public void llenarDatos(){
+        String nombre=getNombreJugador();
+        String t1="leer_datos('"+nombre+"',V,D,E).";
+        Query q1=new Query(t1);
+        
+        while(q1.hasMoreSolutions()){
+            HashMap hm=(HashMap)q1.nextSolution();
+            setVictorias(Integer.parseInt(hm.get("V").toString()));
+            setDerrotas(Integer.parseInt(hm.get("D").toString()));
+            setEmpates(Integer.parseInt(hm.get("E").toString()));
+            setJuegos(victorias+derrotas+empates);
+        }
+    }
 }

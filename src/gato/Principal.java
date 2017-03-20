@@ -97,16 +97,19 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
-        String nombre=txtJugador.getText().trim();
+        String nombre=txtJugador.getText().toLowerCase().trim();
         if(!nombre.equals("")){
-            jugador.setNombreJugador(txtJugador.getText().trim());
             juego.prologMysql();
-            juego.baseDatosAñadir(jugador.getNombreJugador());
-            /*
+            jugador.setNombreJugador(nombre);
+            if(jugador.existe(nombre))
+                jugador.llenarDatos();
+            else
+                juego.baseDatosAñadir(nombre);
+            
             Tablero t1=new Tablero();
             t1.setLocationRelativeTo(null);
             t1.setVisible(true);
-            */
+            
         }else
             JOptionPane.showMessageDialog(null, "Debes de insertar un nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnJugarActionPerformed

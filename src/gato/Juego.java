@@ -6,6 +6,7 @@
 package gato;
 
 import org.jpl7.Query;
+import java.util.HashMap;
 
 /**
  *
@@ -76,9 +77,23 @@ public class Juego {
         System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
     }
     
+    private int lastID(){
+        int ID=0;
+        String t1="leer_id(X).";
+        Query q1=new Query(t1);
+        while(q1.hasMoreSolutions()){
+            HashMap hm=(HashMap)q1.nextSolution();
+            ID=Integer.parseInt(hm.get("X").toString());
+            break;
+        }
+        
+        return ID;
+    }
+    
     public void baseDatosAñadir(String nombre){
         baseDatosIni();
-        String t1="insertar(1,"+"'"+nombre+"'"+",X).";
+        int ID=lastID()+1;
+        String t1="insertar("+ID+",'"+nombre+"',X).";
         Query q1=new Query(t1);
         System.out.println(t1+" "+(q1.hasMoreSolutions()? "correcto" : "fallo"));
     }

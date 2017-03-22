@@ -99,12 +99,21 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre=txtJugador.getText().toLowerCase().trim();
         if(!nombre.equals("")){
+            /*
             juego.prologMysql();
             jugador.setNombreJugador(nombre);
             if(jugador.existe(nombre))
                 jugador.llenarDatos();
             else
                 juego.baseDatosAñadir(nombre);
+            */
+            
+            int inicio=JOptionPane.showConfirmDialog(null, "¿Deseas empezar primero?", "Nueva Partida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(inicio==JOptionPane.YES_OPTION)
+                juego.setTurno("jugador");
+            else
+                juego.setTurno("maquina");
+            juego.asignarFicha();
             
             Tablero t1=new Tablero();
             t1.setLocationRelativeTo(null);

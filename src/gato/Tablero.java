@@ -5,6 +5,8 @@
  */
 package gato;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Sonny
@@ -60,18 +62,53 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         boton3.setPreferredSize(new java.awt.Dimension(70, 66));
+        boton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton3ActionPerformed(evt);
+            }
+        });
 
         boton5.setPreferredSize(new java.awt.Dimension(70, 66));
+        boton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton5ActionPerformed(evt);
+            }
+        });
 
         boton4.setPreferredSize(new java.awt.Dimension(70, 66));
+        boton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton4ActionPerformed(evt);
+            }
+        });
 
         boton6.setPreferredSize(new java.awt.Dimension(70, 66));
+        boton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton6ActionPerformed(evt);
+            }
+        });
 
         boton8.setPreferredSize(new java.awt.Dimension(70, 66));
+        boton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton8ActionPerformed(evt);
+            }
+        });
 
         boton7.setPreferredSize(new java.awt.Dimension(70, 66));
+        boton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton7ActionPerformed(evt);
+            }
+        });
 
         boton9.setPreferredSize(new java.awt.Dimension(70, 66));
+        boton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton9ActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -154,13 +191,66 @@ public class Tablero extends javax.swing.JFrame {
 
     private void boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton1ActionPerformed
         // TODO add your handling code here:
-        
+        boton1.setIcon(juego.movimiento());
+        for(ActionListener al: boton1.getActionListeners())
+            boton1.removeActionListener(al);
     }//GEN-LAST:event_boton1ActionPerformed
 
     private void boton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton2ActionPerformed
         // TODO add your handling code here:
-        
+        boton2.setIcon(juego.movimiento());
+        for(ActionListener al: boton2.getActionListeners())
+            boton2.removeActionListener(al);
     }//GEN-LAST:event_boton2ActionPerformed
+
+    private void boton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton3ActionPerformed
+        // TODO add your handling code here:
+        boton3.setIcon(juego.movimiento());
+        for(ActionListener al: boton3.getActionListeners())
+            boton3.removeActionListener(al);
+    }//GEN-LAST:event_boton3ActionPerformed
+
+    private void boton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton4ActionPerformed
+        // TODO add your handling code here:
+        boton4.setIcon(juego.movimiento());
+        for(ActionListener al: boton4.getActionListeners())
+            boton4.removeActionListener(al);
+    }//GEN-LAST:event_boton4ActionPerformed
+
+    private void boton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton5ActionPerformed
+        // TODO add your handling code here:
+        boton5.setIcon(juego.movimiento());
+        for(ActionListener al: boton5.getActionListeners())
+            boton5.removeActionListener(al);
+    }//GEN-LAST:event_boton5ActionPerformed
+
+    private void boton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton6ActionPerformed
+        // TODO add your handling code here:
+        boton6.setIcon(juego.movimiento());
+        for(ActionListener al: boton6.getActionListeners())
+            boton6.removeActionListener(al);
+    }//GEN-LAST:event_boton6ActionPerformed
+
+    private void boton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton7ActionPerformed
+        // TODO add your handling code here:
+        boton7.setIcon(juego.movimiento());
+        for(ActionListener al: boton7.getActionListeners())
+            boton7.removeActionListener(al);
+    }//GEN-LAST:event_boton7ActionPerformed
+
+    private void boton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton8ActionPerformed
+        // TODO add your handling code here:
+        boton8.setIcon(juego.movimiento());
+        for(ActionListener al: boton8.getActionListeners())
+            boton8.removeActionListener(al);
+    }//GEN-LAST:event_boton8ActionPerformed
+
+    private void boton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton9ActionPerformed
+        // TODO add your handling code here:
+        boton9.setIcon(juego.movimiento());
+        for(ActionListener al: boton9.getActionListeners())
+            boton9.removeActionListener(al);
+    }//GEN-LAST:event_boton9ActionPerformed
 
     /**
      * @param args the command line arguments

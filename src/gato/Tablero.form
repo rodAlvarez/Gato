@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
@@ -132,6 +132,9 @@
           <Dimension value="[70, 66]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="boton5">
       <Properties>
@@ -139,6 +142,9 @@
           <Dimension value="[70, 66]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton5ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="boton4">
       <Properties>
@@ -146,6 +152,9 @@
           <Dimension value="[70, 66]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton4ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="boton6">
       <Properties>
@@ -153,6 +162,9 @@
           <Dimension value="[70, 66]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton6ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="boton8">
       <Properties>
@@ -160,6 +172,9 @@
           <Dimension value="[70, 66]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton8ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="boton7">
       <Properties>
@@ -167,6 +182,9 @@
           <Dimension value="[70, 66]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton7ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="boton9">
       <Properties>
@@ -174,6 +192,9 @@
           <Dimension value="[70, 66]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton9ActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <Properties>

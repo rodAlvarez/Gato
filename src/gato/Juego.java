@@ -5,8 +5,10 @@
  */
 package gato;
 
+import java.awt.Image;
 import org.jpl7.Query;
 import java.util.HashMap;
+import javax.swing.*;
 
 /**
  *
@@ -54,6 +56,22 @@ public class Juego {
     public void setFo(int fo) {
         this.fo = fo;
     }
+
+    public String getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(String ficha) {
+        this.ficha = ficha;
+    }
+
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
     
     public void asignarFicha(){
         if(turno.equals("jugador")){
@@ -63,6 +81,25 @@ public class Juego {
             turno="maquina";
             ficha="o";
         }
+    }
+    
+    public ImageIcon movimiento(){
+        ImageIcon icon;
+        if(ficha.equals("o")){
+            icon=new ImageIcon(this.getClass().getResource("circulo.png"));
+            ficha="x";
+        } else{
+            icon=new ImageIcon(this.getClass().getResource("equis.png"));
+            ficha="o";
+        }
+        
+        if(turno.equals("jugador"))
+            turno="maquina";
+        else
+            turno="jugador";
+        
+        icon=new ImageIcon(icon.getImage().getScaledInstance(63, -1, 1));
+        return icon;
     }
     
     public void prologMysql(){

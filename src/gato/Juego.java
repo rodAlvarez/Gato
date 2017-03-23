@@ -5,7 +5,7 @@
  */
 package gato;
 
-import java.awt.Image;
+import java.awt.Component;
 import org.jpl7.Query;
 import java.util.HashMap;
 import javax.swing.*;
@@ -20,8 +20,6 @@ public class Juego {
     private String mensaje;
     private String turno;
     private String ficha;
-    private int fx;
-    private int fo;
 
     private Juego() {
     }
@@ -39,22 +37,6 @@ public class Juego {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
-    }
-
-    public int getFx() {
-        return fx;
-    }
-
-    public void setFx(int fx) {
-        this.fx = fx;
-    }
-
-    public int getFo() {
-        return fo;
-    }
-
-    public void setFo(int fo) {
-        this.fo = fo;
     }
 
     public String getFicha() {
@@ -100,6 +82,57 @@ public class Juego {
         
         icon=new ImageIcon(icon.getImage().getScaledInstance(63, -1, 1));
         return icon;
+    }
+    
+    public boolean gano(Tablero t){
+        boolean gano=false;
+        String[][] botones={{t.boton1.getName(),t.boton2.getName(), t.boton3.getName()}, 
+                            {t.boton4.getName(), t.boton5.getName(), t.boton6.getName()}, 
+                            {t.boton7.getName(), t.boton8.getName(), t.boton9.getName()}};
+        
+        //Checar victoria horizontal
+        for(int i=0; i<3; i++){
+            String b1=botones[i][0];
+            String b2=botones[i][1];
+            String b3=botones[i][2];
+            if(b1.equals(b2) && b2.equals(b3)){
+                gano=true;
+                return gano;
+            }
+        }
+        
+        //Checar victoria Vertical
+        for(int i=0; i<3; i++){
+            String b1=botones[0][i];
+            String b2=botones[1][i];
+            String b3=botones[2][i];
+            if(b1.equals(b2) && b2.equals(b3)){
+                gano=true;
+                return gano;
+            }
+        }
+        
+        //Checar vicotia diagonal
+        for(int i=0; i<3; i++){
+            String b1=botones[i][i];
+            String b2=botones[i][i];
+            String b3=botones[i][i];
+            if(b1.equals(b2) && b2.equals(b3)){
+                gano=true;
+                return gano;
+            }
+        }
+        
+        //Checar victoria diagonal invertida
+        String b1=botones[0][2];
+        String b2=botones[1][1];
+        String b3=botones[2][0];
+        if(b1.equals(b2) && b2.equals(b3)){
+            gano=true;
+            return gano;
+        }
+        
+        return gano;
     }
     
     public void prologMysql(){

@@ -5,6 +5,7 @@
  */
 package gato;
 
+import java.awt.Component;
 import java.awt.event.ActionListener;
 
 /**
@@ -19,7 +20,11 @@ public class Tablero extends javax.swing.JFrame {
     Juego juego=Juego.getJuego();
     public Tablero() {
         initComponents();
+        
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +52,7 @@ public class Tablero extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        boton2.setName("2"); // NOI18N
         boton2.setPreferredSize(new java.awt.Dimension(70, 66));
         boton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +60,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        boton1.setName("1"); // NOI18N
         boton1.setPreferredSize(new java.awt.Dimension(70, 66));
         boton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +68,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        boton3.setName("3"); // NOI18N
         boton3.setPreferredSize(new java.awt.Dimension(70, 66));
         boton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +76,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        boton5.setName("5"); // NOI18N
         boton5.setPreferredSize(new java.awt.Dimension(70, 66));
         boton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +84,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        boton4.setName("4"); // NOI18N
         boton4.setPreferredSize(new java.awt.Dimension(70, 66));
         boton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +92,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        boton6.setName("6"); // NOI18N
         boton6.setPreferredSize(new java.awt.Dimension(70, 66));
         boton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +100,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        boton8.setName("8"); // NOI18N
         boton8.setPreferredSize(new java.awt.Dimension(70, 66));
         boton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +108,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        boton7.setName("7"); // NOI18N
         boton7.setPreferredSize(new java.awt.Dimension(70, 66));
         boton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +116,7 @@ public class Tablero extends javax.swing.JFrame {
             }
         });
 
+        boton9.setName("9"); // NOI18N
         boton9.setPreferredSize(new java.awt.Dimension(70, 66));
         boton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,70 +202,118 @@ public class Tablero extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    
     private void boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton1ActionPerformed
         // TODO add your handling code here:
+        boton1.setName(juego.getFicha());
         boton1.setIcon(juego.movimiento());
+        
         for(ActionListener al: boton1.getActionListeners())
-            boton1.removeActionListener(al);
+            boton1.removeActionListener(al);         
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton1ActionPerformed
 
     private void boton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton2ActionPerformed
         // TODO add your handling code here:
+        boton2.setName(juego.getFicha());
         boton2.setIcon(juego.movimiento());
         for(ActionListener al: boton2.getActionListeners())
             boton2.removeActionListener(al);
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton2ActionPerformed
 
     private void boton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton3ActionPerformed
         // TODO add your handling code here:
+        boton3.setName(juego.getFicha());
         boton3.setIcon(juego.movimiento());
         for(ActionListener al: boton3.getActionListeners())
             boton3.removeActionListener(al);
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton3ActionPerformed
 
     private void boton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton4ActionPerformed
         // TODO add your handling code here:
+        boton4.setName(juego.getFicha());
         boton4.setIcon(juego.movimiento());
         for(ActionListener al: boton4.getActionListeners())
             boton4.removeActionListener(al);
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton4ActionPerformed
 
     private void boton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton5ActionPerformed
         // TODO add your handling code here:
+        boton5.setName(juego.getFicha());
         boton5.setIcon(juego.movimiento());
         for(ActionListener al: boton5.getActionListeners())
             boton5.removeActionListener(al);
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton5ActionPerformed
 
     private void boton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton6ActionPerformed
         // TODO add your handling code here:
+        boton6.setName(juego.getFicha());
         boton6.setIcon(juego.movimiento());
         for(ActionListener al: boton6.getActionListeners())
             boton6.removeActionListener(al);
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton6ActionPerformed
 
     private void boton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton7ActionPerformed
         // TODO add your handling code here:
+        boton7.setName(juego.getFicha());
         boton7.setIcon(juego.movimiento());
         for(ActionListener al: boton7.getActionListeners())
             boton7.removeActionListener(al);
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton7ActionPerformed
 
     private void boton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton8ActionPerformed
         // TODO add your handling code here:
+        boton8.setName(juego.getFicha());
         boton8.setIcon(juego.movimiento());
         for(ActionListener al: boton8.getActionListeners())
             boton8.removeActionListener(al);
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton8ActionPerformed
 
     private void boton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton9ActionPerformed
         // TODO add your handling code here:
+        boton9.setName(juego.getFicha());
         boton9.setIcon(juego.movimiento());
         for(ActionListener al: boton9.getActionListeners())
             boton9.removeActionListener(al);
+        
+        if(juego.gano(this)){
+            
+        }
     }//GEN-LAST:event_boton9ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -284,22 +346,24 @@ public class Tablero extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Tablero().setVisible(true);
+                System.out.println("entro1");
             }
+            
         });
         
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton1;
-    private javax.swing.JButton boton2;
-    private javax.swing.JButton boton3;
-    private javax.swing.JButton boton4;
-    private javax.swing.JButton boton5;
-    private javax.swing.JButton boton6;
-    private javax.swing.JButton boton7;
-    private javax.swing.JButton boton8;
-    private javax.swing.JButton boton9;
+    public javax.swing.JButton boton1;
+    public javax.swing.JButton boton2;
+    public javax.swing.JButton boton3;
+    public javax.swing.JButton boton4;
+    public javax.swing.JButton boton5;
+    public javax.swing.JButton boton6;
+    public javax.swing.JButton boton7;
+    public javax.swing.JButton boton8;
+    public javax.swing.JButton boton9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

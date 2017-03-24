@@ -20,7 +20,9 @@ public class Tablero extends javax.swing.JFrame {
     Juego juego=Juego.getJuego();
     public Tablero() {
         initComponents();
-        
+        String name=juego.getJugador().getNombreJugador();
+        txtMensajes.setText("Bienvenido "+name.substring(0,1).toUpperCase()+name.substring(1)+"\n");
+        txtMensajes.append("Es turno de: "+juego.getTurno());
     }
     
     
@@ -209,109 +211,99 @@ public class Tablero extends javax.swing.JFrame {
         // TODO add your handling code here:
         boton1.setName(juego.getFicha());
         boton1.setIcon(juego.movimiento());
+        juego.gano(this);
         
         for(ActionListener al: boton1.getActionListeners())
             boton1.removeActionListener(al);         
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton1ActionPerformed
 
     private void boton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton2ActionPerformed
         // TODO add your handling code here:
         boton2.setName(juego.getFicha());
         boton2.setIcon(juego.movimiento());
+        juego.gano(this);
+        
         for(ActionListener al: boton2.getActionListeners())
             boton2.removeActionListener(al);
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton2ActionPerformed
 
     private void boton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton3ActionPerformed
         // TODO add your handling code here:
         boton3.setName(juego.getFicha());
         boton3.setIcon(juego.movimiento());
+        juego.gano(this);
+        
         for(ActionListener al: boton3.getActionListeners())
             boton3.removeActionListener(al);
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton3ActionPerformed
 
     private void boton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton4ActionPerformed
         // TODO add your handling code here:
         boton4.setName(juego.getFicha());
         boton4.setIcon(juego.movimiento());
+        juego.gano(this);
+        
         for(ActionListener al: boton4.getActionListeners())
             boton4.removeActionListener(al);
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton4ActionPerformed
 
     private void boton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton5ActionPerformed
         // TODO add your handling code here:
         boton5.setName(juego.getFicha());
         boton5.setIcon(juego.movimiento());
+        juego.gano(this);
+        
         for(ActionListener al: boton5.getActionListeners())
             boton5.removeActionListener(al);
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton5ActionPerformed
 
     private void boton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton6ActionPerformed
         // TODO add your handling code here:
         boton6.setName(juego.getFicha());
         boton6.setIcon(juego.movimiento());
+        juego.gano(this);
+        
         for(ActionListener al: boton6.getActionListeners())
             boton6.removeActionListener(al);
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton6ActionPerformed
 
     private void boton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton7ActionPerformed
         // TODO add your handling code here:
         boton7.setName(juego.getFicha());
         boton7.setIcon(juego.movimiento());
+        juego.gano(this);
+        
         for(ActionListener al: boton7.getActionListeners())
             boton7.removeActionListener(al);
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton7ActionPerformed
 
     private void boton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton8ActionPerformed
         // TODO add your handling code here:
         boton8.setName(juego.getFicha());
         boton8.setIcon(juego.movimiento());
+        juego.gano(this);
+        
         for(ActionListener al: boton8.getActionListeners())
             boton8.removeActionListener(al);
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton8ActionPerformed
 
     private void boton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton9ActionPerformed
         // TODO add your handling code here:
         boton9.setName(juego.getFicha());
         boton9.setIcon(juego.movimiento());
+        juego.gano(this);
+        
         for(ActionListener al: boton9.getActionListeners())
             boton9.removeActionListener(al);
         
-        if(juego.gano(this)){
-            
-        }
     }//GEN-LAST:event_boton9ActionPerformed
     
     /**
@@ -368,6 +360,6 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtMensajes;
+    public javax.swing.JTextArea txtMensajes;
     // End of variables declaration//GEN-END:variables
 }

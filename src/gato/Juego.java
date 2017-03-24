@@ -9,6 +9,10 @@ import java.awt.Component;
 import org.jpl7.Query;
 import java.util.HashMap;
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.Element;
+import javax.swing.text.Utilities;
 
 /**
  *
@@ -16,10 +20,11 @@ import javax.swing.*;
  */
 public class Juego {
     private static Juego juego;
-    private Jugador jugador=Jugador.getJugador();
+    private Jugador jugador;
     private String mensaje;
     private String turno;
     private String ficha;
+    private int clicks;
 
     private Juego() {
     }
@@ -29,6 +34,11 @@ public class Juego {
             juego=new Juego();
         }
         return juego;
+    }
+    
+    public Jugador getJugador(){
+        jugador=Jugador.getJugador();
+        return jugador;
     }
 
     public String getMensaje() {
@@ -74,17 +84,13 @@ public class Juego {
             icon=new ImageIcon(this.getClass().getResource("equis.png"));
             ficha="o";
         }
-        
-        if(turno.equals("jugador"))
-            turno="maquina";
-        else
-            turno="jugador";
+        clicks+=1;
         
         icon=new ImageIcon(icon.getImage().getScaledInstance(63, -1, 1));
         return icon;
     }
     
-    public boolean gano(Tablero t){
+    public void gano(Tablero t){
         boolean gano=false;
         String[][] botones={{t.boton1.getName(),t.boton2.getName(), t.boton3.getName()}, 
                             {t.boton4.getName(), t.boton5.getName(), t.boton6.getName()}, 
@@ -96,45 +102,94 @@ public class Juego {
             String b2=botones[i][1];
             String b3=botones[i][2];
             if(b1.equals(b2) && b2.equals(b3)){
-                gano=true;
-                return gano;
+                gano=true; 
+                break;
             }
         }
         
         //Checar victoria Vertical
-        for(int i=0; i<3; i++){
-            String b1=botones[0][i];
-            String b2=botones[1][i];
-            String b3=botones[2][i];
-            if(b1.equals(b2) && b2.equals(b3)){
-                gano=true;
-                return gano;
+        if(!gano)
+            for(int i=0; i<3; i++){
+                String b1=botones[0][i];
+                String b2=botones[1][i];
+                String b3=botones[2][i];
+                if(b1.equals(b2) && b2.equals(b3)){
+                    gano=true; 
+                    break;
+                }
             }
-        }
         
         //Checar vicotia diagonal
-        for(int i=0; i<3; i++){
-            String b1=botones[i][i];
-            String b2=botones[i][i];
-            String b3=botones[i][i];
-            if(b1.equals(b2) && b2.equals(b3)){
+        if(!gano){
+            String b1=botones[0][0];
+            String b2=botones[1][1];
+            String b3=botones[2][2];
+            if(b1.equals(b2) && b2.equals(b3))
                 gano=true;
-                return gano;
-            }
         }
         
         //Checar victoria diagonal invertida
-        String b1=botones[0][2];
-        String b2=botones[1][1];
-        String b3=botones[2][0];
-        if(b1.equals(b2) && b2.equals(b3)){
-            gano=true;
-            return gano;
+        if(!gano){
+            String b1=botones[0][2];
+            String b2=botones[1][1];
+            String b3=botones[2][0];
+            if(b1.equals(b2) && b2.equals(b3))
+                gano=true;
         }
         
-        return gano;
+        //Si no hay victorias, se pasa al siguiente turno
+        if(!gano && clicks!=9){
+            if(turno.equals("jugador")){
+                turno="maquina";
+            }
+            else{
+                turno="jugador";
+            }
+            actualizarMensaje(t);
+        }
+        
+        //Si aún no se gana y ya se hicieron todos los movimientos
+        if(!gano && clicks==9){
+            System.out.println("Empate");
+        }
+        
+        if(gano){
+            if(turno.equals("jugador"))
+                JOptionPane.showMessageDialog(null, "Felicidades, ganaste :)", "Victoria", JOptionPane.INFORMATION_MESSAGE);
+            else
+                JOptionPane.showMessageDialog(null, "Mala suerte, perdiste :(", "Derrota", JOptionPane.INFORMATION_MESSAGE);
+            
+            int nuevoJuego= JOptionPane.showConfirmDialog(
+                    null, "¿Deseas iniciar otra partida?", "Nuevo juego", 
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(nuevoJuego==JOptionPane.YES_OPTION){
+                t.dispose();
+                Tablero rematch=new Tablero();
+                rematch.setLocationRelativeTo(null);
+                rematch.setVisible(true);
+            } else
+                t.dispose();
+        }
+        
     }
     
+    private void actualizarMensaje(Tablero t){
+        try{
+            Document doc=t.txtMensajes.getDocument();
+            Element rootElem= doc.getDefaultRootElement();
+            int numLines= rootElem.getElementCount();
+            Element lineElem= rootElem.getElement(numLines-1);
+            int start= lineElem.getStartOffset();
+            int end= lineElem.getEndOffset();
+            doc.remove(start, end-start-1);
+            
+            mensaje="Turno de: "+turno;
+            t.txtMensajes.append(mensaje);
+          
+        } catch(BadLocationException ex){
+            ex.printStackTrace();
+        }
+    }
     public void prologMysql(){
         String t1="consult('mysql.pl')";
         Query q1=new Query(t1);

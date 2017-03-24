@@ -32,22 +32,14 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnJugar = new javax.swing.JToggleButton();
         btnEstadisticas = new javax.swing.JButton();
         txtJugador = new javax.swing.JTextField();
+        btnJugar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Bienvenido");
-
-        btnJugar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnJugar.setText("Jugar");
-        btnJugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJugarActionPerformed(evt);
-            }
-        });
 
         btnEstadisticas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnEstadisticas.setText("Estadísticas");
@@ -60,6 +52,14 @@ public class Principal extends javax.swing.JFrame {
         txtJugador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtJugador.setText("Escribe tu nombre");
 
+        btnJugar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJugar.setText("Jugar");
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJugarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,11 +70,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtJugador)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(120, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(118, 118, 118))
         );
@@ -87,21 +87,32 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(txtJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
+        // TODO add your handling code here:
+        String nombre=txtJugador.getText().trim();
+        if(!nombre.equals("")){
+            jugador.setNombreJugador(txtJugador.getText().trim());
+            
+        }else
+            JOptionPane.showMessageDialog(null, "Debes de insertar un nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_btnEstadisticasActionPerformed
+
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
         String nombre=txtJugador.getText().toLowerCase().trim();
         if(!nombre.equals("")){
-            /*
-            juego.prologMysql();
+            
+            //juego.prologMysql();
             jugador.setNombreJugador(nombre);
+            /*
             if(jugador.existe(nombre))
                 jugador.llenarDatos();
             else
@@ -122,16 +133,6 @@ public class Principal extends javax.swing.JFrame {
         }else
             JOptionPane.showMessageDialog(null, "Debes de insertar un nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnJugarActionPerformed
-
-    private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
-        // TODO add your handling code here:
-        String nombre=txtJugador.getText().trim();
-        if(!nombre.equals("")){
-            jugador.setNombreJugador(txtJugador.getText().trim());
-            
-        }else
-            JOptionPane.showMessageDialog(null, "Debes de insertar un nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_btnEstadisticasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,7 +171,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEstadisticas;
-    private javax.swing.JToggleButton btnJugar;
+    private javax.swing.JButton btnJugar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtJugador;
     // End of variables declaration//GEN-END:variables

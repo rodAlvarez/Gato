@@ -5,6 +5,7 @@
  */
 package gato;
 
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +21,8 @@ public class Principal extends javax.swing.JFrame {
     Juego juego=Juego.getJuego();
     public Principal() {
         initComponents();
+        juego.prologMysql();
+        juego.cargarCombo(txtCombo);
     }
 
     /**
@@ -33,8 +36,9 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnEstadisticas = new javax.swing.JButton();
-        txtJugador = new javax.swing.JTextField();
         btnJugar = new javax.swing.JButton();
+        txtCombo = new javax.swing.JComboBox<>();
+        nuevoJugador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,9 +53,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        txtJugador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtJugador.setText("Escribe tu nombre");
-
         btnJugar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnJugar.setText("Jugar");
         btnJugar.addActionListener(new java.awt.event.ActionListener() {
@@ -60,36 +61,53 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        txtCombo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        nuevoJugador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nuevoJugador.setText("Nuego jugador");
+        nuevoJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoJugadorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtJugador)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(120, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(118, 118, 118))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(nuevoJugador)
+                        .addGap(5, 5, 5)
+                        .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addComponent(txtJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
+                .addComponent(txtCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(nuevoJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,9 +115,31 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
         // TODO add your handling code here:
-        String nombre=txtJugador.getText().trim();
+        String nombre=txtCombo.getSelectedItem().toString();
         if(!nombre.equals("")){
-            jugador.setNombreJugador(txtJugador.getText().trim());
+            jugador.setNombreJugador(nombre);
+            juego.prologMysql();
+            jugador.llenarDatos();
+            int victorias=jugador.getVictorias();
+            int derrotas=jugador.getDerrotas();
+            int empates=jugador.getEmpates();
+            float total=victorias+derrotas+empates;
+            DecimalFormat df=new DecimalFormat("#.##%");
+            String vicPor=df.format(victorias/total);
+            String derPor=df.format(derrotas/total);
+            String empPor=df.format(empates/total);
+
+            Estadísticas pe=new Estadísticas();
+            pe.lblNombre.setText(nombre);
+            pe.lblVic.setText(""+victorias);
+            pe.lblDer.setText(""+derrotas);
+            pe.lblEmp.setText(""+empates);
+            pe.lblTotal.setText(""+(victorias+derrotas+empates));
+            pe.lblVicPor.setText(vicPor);
+            pe.lblDerPor.setText(derPor);
+            pe.lblEmpPor.setText(empPor);
+            pe.setLocationRelativeTo(null);
+            pe.setVisible(true);
             
         }else
             JOptionPane.showMessageDialog(null, "Debes de insertar un nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
@@ -107,32 +147,35 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
-        String nombre=txtJugador.getText().toLowerCase().trim();
+        String nombre=txtCombo.getSelectedItem().toString();
+            
+        juego.prologMysql();
+        jugador.setNombreJugador(nombre);
+
+        jugador.llenarDatos();
+
+
+        int inicio=JOptionPane.showConfirmDialog(null, "¿Deseas empezar primero?", "Nueva Partida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(inicio==JOptionPane.YES_OPTION)
+            juego.setTurno("jugador");
+        else
+            juego.setTurno("maquina");
+        juego.asignarFicha();
+
+        Tablero t1=new Tablero();
+        t1.setLocationRelativeTo(null);
+        t1.setVisible(true);
+    }//GEN-LAST:event_btnJugarActionPerformed
+
+    private void nuevoJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoJugadorActionPerformed
+        // TODO add your handling code here:
+        String nombre=JOptionPane.showInputDialog(null, "Ingresa el nombre de usuario", "Nuevo usuario", JOptionPane.QUESTION_MESSAGE);
         if(!nombre.equals("")){
-            
-            //juego.prologMysql();
-            jugador.setNombreJugador(nombre);
-            /*
-            if(jugador.existe(nombre))
-                jugador.llenarDatos();
-            else
-                juego.baseDatosAñadir(nombre);
-            */
-            
-            int inicio=JOptionPane.showConfirmDialog(null, "¿Deseas empezar primero?", "Nueva Partida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if(inicio==JOptionPane.YES_OPTION)
-                juego.setTurno("jugador");
-            else
-                juego.setTurno("maquina");
-            juego.asignarFicha();
-            
-            Tablero t1=new Tablero();
-            t1.setLocationRelativeTo(null);
-            t1.setVisible(true);
-            
+            juego.baseDatosAñadir(nombre.toLowerCase().trim());
+            juego.cargarCombo(txtCombo);
         }else
             JOptionPane.showMessageDialog(null, "Debes de insertar un nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_btnJugarActionPerformed
+    }//GEN-LAST:event_nuevoJugadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,6 +216,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnEstadisticas;
     private javax.swing.JButton btnJugar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtJugador;
+    private javax.swing.JButton nuevoJugador;
+    private javax.swing.JComboBox<String> txtCombo;
     // End of variables declaration//GEN-END:variables
 }

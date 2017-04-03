@@ -107,4 +107,12 @@ public class Jugador {
             setJuegos(victorias+derrotas+empates);
         }
     }
+    
+    public void actualizar(String dato, int cant){
+        String campos="'"+nombreJugador+"','"+dato+"',"+cant;
+        String t1="actualiza_datos("+campos+")";
+        Query q1=new Query(t1);
+        if(!q1.hasSolution())
+            System.out.println("Fallo");
+    }
 }

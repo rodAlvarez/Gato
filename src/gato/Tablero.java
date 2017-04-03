@@ -21,8 +21,13 @@ public class Tablero extends javax.swing.JFrame {
     public Tablero() {
         initComponents();
         String name=juego.getJugador().getNombreJugador();
-        txtMensajes.setText("Bienvenido "+name.substring(0,1).toUpperCase()+name.substring(1)+"\n");
+        juego.getJugador().llenarDatos();
+        juego.setFin(false);
+        txtMensajes.setText("Bienvenido "+name+"\n");
         txtMensajes.append("Es turno de: "+juego.getTurno());
+        if(juego.getTurno().equals("maquina")){
+            juego.turno(this);
+        }
     }
     
     
@@ -212,10 +217,12 @@ public class Tablero extends javax.swing.JFrame {
         boton1.setName(juego.getFicha());
         boton1.setIcon(juego.movimiento());
         juego.gano(this);
-        
-        for(ActionListener al: boton1.getActionListeners())
-            boton1.removeActionListener(al);         
-        
+        if(!juego.isFin()){
+            juego.turno(this);
+
+            for(ActionListener al: boton1.getActionListeners())
+                boton1.removeActionListener(al);         
+        }
     }//GEN-LAST:event_boton1ActionPerformed
 
     private void boton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton2ActionPerformed
@@ -223,10 +230,13 @@ public class Tablero extends javax.swing.JFrame {
         boton2.setName(juego.getFicha());
         boton2.setIcon(juego.movimiento());
         juego.gano(this);
+        if(!juego.isFin()){
+            juego.turno(this);
         
-        for(ActionListener al: boton2.getActionListeners())
-            boton2.removeActionListener(al);
-        
+            for(ActionListener al: boton2.getActionListeners())
+                boton2.removeActionListener(al);
+        } else
+            dispose();
     }//GEN-LAST:event_boton2ActionPerformed
 
     private void boton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton3ActionPerformed
@@ -234,9 +244,13 @@ public class Tablero extends javax.swing.JFrame {
         boton3.setName(juego.getFicha());
         boton3.setIcon(juego.movimiento());
         juego.gano(this);
-        
-        for(ActionListener al: boton3.getActionListeners())
-            boton3.removeActionListener(al);
+        if(!juego.isFin()){
+            juego.turno(this);
+
+            for(ActionListener al: boton3.getActionListeners())
+                boton3.removeActionListener(al);
+        }else
+            dispose();
         
     }//GEN-LAST:event_boton3ActionPerformed
 
@@ -245,9 +259,13 @@ public class Tablero extends javax.swing.JFrame {
         boton4.setName(juego.getFicha());
         boton4.setIcon(juego.movimiento());
         juego.gano(this);
-        
-        for(ActionListener al: boton4.getActionListeners())
-            boton4.removeActionListener(al);
+        if(!juego.isFin()){
+            juego.turno(this);
+
+            for(ActionListener al: boton4.getActionListeners())
+                boton4.removeActionListener(al);
+        }else
+            dispose();
         
     }//GEN-LAST:event_boton4ActionPerformed
 
@@ -256,9 +274,13 @@ public class Tablero extends javax.swing.JFrame {
         boton5.setName(juego.getFicha());
         boton5.setIcon(juego.movimiento());
         juego.gano(this);
-        
-        for(ActionListener al: boton5.getActionListeners())
-            boton5.removeActionListener(al);
+        if(!juego.isFin()){
+            juego.turno(this);
+
+            for(ActionListener al: boton5.getActionListeners())
+                boton5.removeActionListener(al);
+        }else
+            dispose();
         
     }//GEN-LAST:event_boton5ActionPerformed
 
@@ -267,9 +289,13 @@ public class Tablero extends javax.swing.JFrame {
         boton6.setName(juego.getFicha());
         boton6.setIcon(juego.movimiento());
         juego.gano(this);
-        
-        for(ActionListener al: boton6.getActionListeners())
-            boton6.removeActionListener(al);
+        if(!juego.isFin()){
+            juego.turno(this);
+
+            for(ActionListener al: boton6.getActionListeners())
+                boton6.removeActionListener(al);
+        }else
+            dispose();
         
     }//GEN-LAST:event_boton6ActionPerformed
 
@@ -278,9 +304,13 @@ public class Tablero extends javax.swing.JFrame {
         boton7.setName(juego.getFicha());
         boton7.setIcon(juego.movimiento());
         juego.gano(this);
-        
-        for(ActionListener al: boton7.getActionListeners())
-            boton7.removeActionListener(al);
+        if(!juego.isFin()){
+            juego.turno(this);
+
+            for(ActionListener al: boton7.getActionListeners())
+                boton7.removeActionListener(al);
+        }else
+            dispose();
         
     }//GEN-LAST:event_boton7ActionPerformed
 
@@ -289,9 +319,13 @@ public class Tablero extends javax.swing.JFrame {
         boton8.setName(juego.getFicha());
         boton8.setIcon(juego.movimiento());
         juego.gano(this);
-        
-        for(ActionListener al: boton8.getActionListeners())
-            boton8.removeActionListener(al);
+        if(!juego.isFin()){
+            juego.turno(this);
+
+            for(ActionListener al: boton8.getActionListeners())
+                boton8.removeActionListener(al);
+        }else
+            dispose();
         
     }//GEN-LAST:event_boton8ActionPerformed
 
@@ -300,9 +334,13 @@ public class Tablero extends javax.swing.JFrame {
         boton9.setName(juego.getFicha());
         boton9.setIcon(juego.movimiento());
         juego.gano(this);
-        
-        for(ActionListener al: boton9.getActionListeners())
-            boton9.removeActionListener(al);
+        if(!juego.isFin()){
+            juego.turno(this);
+
+            for(ActionListener al: boton9.getActionListeners())
+                boton9.removeActionListener(al);
+        }else
+            dispose();
         
     }//GEN-LAST:event_boton9ActionPerformed
     

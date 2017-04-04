@@ -238,19 +238,22 @@ public class Juego {
     public void prologMysql(){
         String t1="consult('mysql.pl')";
         Query q1=new Query(t1);
-        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
+        if(!q1.hasSolution())
+            System.out.println("fallo");
     }
     
     public void prologGato(){
         String t1="consult('gato.pl')";
         Query q1=new Query(t1);
-        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
+        if(!q1.hasSolution())
+            System.out.println("fallo");
     }
     
     private void baseDatosIni(){
         String t1="abrir";
         Query q1=new Query(t1);
-        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
+        if(!q1.hasSolution())
+            System.out.println("fallo");
     }
     
     private int lastID(){
@@ -271,7 +274,8 @@ public class Juego {
         int ID=lastID()+1;
         String t1="insertar("+ID+",'"+nombre+"',X).";
         Query q1=new Query(t1);
-        System.out.println(t1+" "+(q1.hasMoreSolutions()? "correcto" : "fallo"));
+        if(!q1.hasSolution())
+            System.out.println("fallo");
     }
     
     public void cargarCombo(JComboBox<String> c){

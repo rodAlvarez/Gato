@@ -73,7 +73,8 @@ public class Jugador {
     private void baseDatosIni(){
         String t1="abrir";
         Query q1=new Query(t1);
-        System.out.println(t1+" "+(q1.hasSolution()? "correcto" : "fallo"));
+        if(!q1.hasSolution())
+            System.out.println("fallo");
     }
     
     public boolean existe(String nomb){
